@@ -62,11 +62,7 @@ class MainActivity : AppCompatActivity() {
 
             mAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(this){
                 if(it.isSuccessful){
-                    Intent(this@MainActivity, HomeActivity::class.java).also{
-                        mDialog.dismiss()
-                        it.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                        startActivity(Intent(applicationContext, HomeActivity::class.java))
-                    }
+                    startActivity(Intent(applicationContext, HomeActivity::class.java))
                 } else {
                     mDialog.dismiss()
                     Toast.makeText(this, it.exception?.message, Toast.LENGTH_SHORT).show()
