@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "219480078782",
+    "project_id": "final-project-b7c9a",
+    "storage_bucket": "final-project-b7c9a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:219480078782:android:3c6fb7c49aa71d5e7461ef",
+        "android_client_info": {
+          "package_name": "com.sila.savingsmanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "219480078782-q42pmm8jmfclke1tk4nlmuofrk1u3mo3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sila.savingsmanager",
+            "certificate_hash": "ac6d00278faa8d5eebb40d599fb93d713c63efd5"
+          }
+        },
+        {
+          "client_id": "219480078782-dktim94k8h34nr67ld4uke7r3rj2qmcb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCE-ZV_l8_ucyAqK2b8Yo6QMEnukUf5p6A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "219480078782-dktim94k8h34nr67ld4uke7r3rj2qmcb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

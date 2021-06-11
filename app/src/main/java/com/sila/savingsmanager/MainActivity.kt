@@ -1,5 +1,6 @@
 package com.sila.savingsmanager
 
+import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,6 +9,9 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
+import com.firebase.client.Firebase
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,9 +21,18 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mForgetPassword: TextView
     private lateinit var mSignupHere: TextView
 
+    private lateinit var mDialog: ProgressDialog
+
+    //Firebase
+    private lateinit var mAuth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        mAuth= FirebaseAuth.getInstance()
+
+        mDialog = ProgressDialog(this)
 
         loginDetails()
     }
@@ -43,6 +56,21 @@ class MainActivity : AppCompatActivity() {
             if(TextUtils.isEmpty(pass)){
                 mPass.setError("Password is required...")
                 return@OnClickListener
+            }
+
+            mDialog.setMessage("Processing...")
+
+            mAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(this){
+                if(it.isSuccessful){
+                    Intent(this@MainActivity, HomeActivity::class.java).also{
+                        mDialog.dismiss()
+                        it.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        startActivity(Intent(applicationContext, HomeActivity::class.java))
+                    }
+                } else {
+                    mDialog.dismiss()
+                    Toast.makeText(this, it.exception?.message, Toast.LENGTH_SHORT).show()
+                }
             }
         })
 
